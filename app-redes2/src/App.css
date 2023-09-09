@@ -4,7 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
-
+.createGame{
+  display: flex;
+  flex-direction: column;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
