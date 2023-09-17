@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using ProyectoRedes.Models;
 using System;
+using System.Net;
 
 namespace ProyectoRedes.Controllers
 {
@@ -19,14 +21,76 @@ namespace ProyectoRedes.Controllers
             return View();
         }
 
-        
-        // GET: GameController/Create
+
         public ActionResult GetGame()
+        {
+            return View();
+
+        }
+
+        // GET
+        [HttpPost]
+        public ActionResult GetGame(GetGame getGame)
+        {
+            using (var client = new HttpClient())
+                {
+                //    WebClient webClient = new WebClient();
+                //    webClient.QueryString.Add("name", getGame.name);
+                //    webClient.QueryString.Add("status", getGame.status);
+                //    webClient.QueryString.Add("page", getGame.page.ToString());
+                //    webClient.QueryString.Add("limit", getGame.limit.ToString());
+                //    string result = webClient.DownloadString("https://contaminados.meseguercr.com/api/games");
+
+                //client.BaseAddress = new Uri();
+                var responseTask = client.GetAsync("https://contaminados.meseguercr.com/api/games?name="+getGame.name+"&status="+getGame.status);
+
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+
+                    if (result.IsSuccessStatusCode)
+                        {
+                            //var data = JsonConvert.DeserializeObject<Data>(result);
+                            var readTask = result.Content.ReadFromJsonAsync<Data>();
+                            readTask.Wait();
+                            var data = readTask.Result;
+                            
+
+                            return View();
+
+                        }
+                        else
+                        {
+                            return View();
+                        }
+
+                
+
+            }
+            
+        }
+         //Get game by id.
+        public ActionResult GetGameById()
+        {
+            return View();
+
+        }
+
+        // GET
+        [HttpPost]
+        public ActionResult GetGameById(GetGame getGame)
         {
             using (var client = new HttpClient())
             {
+                //    WebClient webClient = new WebClient();
+                //    webClient.QueryString.Add("name", getGame.name);
+                //    webClient.QueryString.Add("status", getGame.status);
+                //    webClient.QueryString.Add("page", getGame.page.ToString());
+                //    webClient.QueryString.Add("limit", getGame.limit.ToString());
+                //    string result = webClient.DownloadString("https://contaminados.meseguercr.com/api/games");
+
                 //client.BaseAddress = new Uri();
-                var responseTask = client.GetAsync("https://virtserver.swaggerhub.com/UCR-SA/contaminaDOS/1.0.0/api/games?name=Game1&status=lobby&page=0&limit=50");
+                var responseTask = client.GetAsync("https://contaminados.meseguercr.com/api/games?name=" + getGame.name);
 
                 responseTask.Wait();
 
@@ -34,21 +98,24 @@ namespace ProyectoRedes.Controllers
 
                 if (result.IsSuccessStatusCode)
                 {
+                    //var data = JsonConvert.DeserializeObject<Data>(result);
                     var readTask = result.Content.ReadFromJsonAsync<Data>();
                     readTask.Wait();
+                    var data = readTask.Result;
+
 
                     return View();
 
                 }
                 else
                 {
-                    return View(null);
+                    return View();
                 }
 
-                
+
 
             }
-            
+
         }
         public ActionResult Create()
         {
@@ -62,7 +129,7 @@ namespace ProyectoRedes.Controllers
             using (var cliente = new HttpClient())
             {
                 //cliente.BaseAddress = new Uri("https://virtserver.swaggerhub.com/UCR-SA/contaminaDOS/1.0.0");
-                var postTask = cliente.PostAsJsonAsync<CreateGame>("https://virtserver.swaggerhub.com/UCR-SA/contaminaDOS/1.0.0/api/games", game);
+                var postTask = cliente.PostAsJsonAsync<CreateGame>("https://contaminados.meseguercr.com/api/games", game);
                 postTask.Wait();
                 var result = postTask.Result;
                 if (result.IsSuccessStatusCode)

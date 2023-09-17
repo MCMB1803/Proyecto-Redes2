@@ -8,8 +8,10 @@
         public string status { get; set; }
         public bool password { get; set; }
 
-        public int currentRound { get; set; }
+        public string currentRound { get; set; }
 
+        public List<string> players { get; set; }
 
+        public List<string> enemies { get; set; }
     }
 }
