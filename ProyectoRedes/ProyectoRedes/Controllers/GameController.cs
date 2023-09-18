@@ -111,6 +111,11 @@ namespace ProyectoRedes.Controllers
         {
             return View();
         }
+
+        public ActionResult Lobby()
+        {
+            return View();
+        }
         // POST: GameController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
