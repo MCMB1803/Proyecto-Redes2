@@ -4,3 +4,11 @@
 .vscode/
 **/node_modules
 **/.mvn
+*.1
+*.vsidx
+*.cache
+*.json
+*.user
+*.props
+*.dll
+*.exe
