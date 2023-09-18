@@ -94,8 +94,6 @@ namespace ProyectoRedes.Controllers
                     var readTask = result.Content.ReadFromJsonAsync<Data>();
                     readTask.Wait();
                     var data = readTask.Result;
-
-
                     return View();
 
                 }
@@ -131,6 +129,7 @@ namespace ProyectoRedes.Controllers
                 else
                 {
                     // Manejo de errores aquí, por ejemplo, puedes registrar el código de estado y el mensaje de error.
+                    // En este caso como siempre es un error 400 se responde con el siguiente mensaje
                     ViewBag.message = "The server cannot or will not process the request due to something that is perceived to be a client error";
                     return View();
                 }
