@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using NuGet.Protocol;
 using ProyectoRedes.Models;
 using System;
 using System.Net;
+using System.Numerics;
 
 namespace ProyectoRedes.Controllers
 {
@@ -53,8 +55,10 @@ namespace ProyectoRedes.Controllers
                             //var data = JsonConvert.DeserializeObject<Data>(result);
                             var readTask = result.Content.ReadFromJsonAsync<Data>();
                             readTask.Wait();
-                            var data = readTask.Result;
                             
+                            var data = readTask.Result;
+                            ViewBag.response = data.ToJson();
+
 
                             return View();
 
@@ -78,7 +82,7 @@ namespace ProyectoRedes.Controllers
 
         // GET
         [HttpPost]
-        public ActionResult GetGameById(GetGame getGame)
+        public ActionResult GetGameById(GetGameId getGame)
         {
             using (var client = new HttpClient())
             {
@@ -90,7 +94,21 @@ namespace ProyectoRedes.Controllers
                 //    string result = webClient.DownloadString("https://contaminados.meseguercr.com/api/games");
 
                 //client.BaseAddress = new Uri();
-                var responseTask = client.GetAsync("https://contaminados.meseguercr.com/api/games?name=" + getGame.name);
+                //var responseTask = client.GetAsync("https://contaminados.meseguercr.com/api/games?name=" + getGame.gameId);
+
+                string baseUrl = "https://contaminados.meseguercr.com/api/games/" + getGame.gameId;
+
+               
+
+                var request = new HttpRequestMessage(HttpMethod.Get, baseUrl);
+
+                request.Headers.Add("password", getGame.password);
+
+                request.Headers.Add("player", getGame.player);
+
+               
+                // Solicitud HTTP
+                var responseTask = client.SendAsync(request);
 
                 responseTask.Wait();
 
@@ -99,9 +117,13 @@ namespace ProyectoRedes.Controllers
                 if (result.IsSuccessStatusCode)
                 {
                     //var data = JsonConvert.DeserializeObject<Data>(result);
-                    var readTask = result.Content.ReadFromJsonAsync<Data>();
+                    var readTask = result.Content.ReadFromJsonAsync<DataGet>();
                     readTask.Wait();
                     var data = readTask.Result;
+                    ViewBag.response = data.ToJson();
+
+
+
 
 
                     return View();
@@ -128,13 +150,22 @@ namespace ProyectoRedes.Controllers
         {
             using (var cliente = new HttpClient())
             {
-                //cliente.BaseAddress = new Uri("https://virtserver.swaggerhub.com/UCR-SA/contaminaDOS/1.0.0");
+                //string baseUrl = "https://contaminados.meseguercr.com/api/games/" + getGame.gameId;
+
+                //var request = new HttpRequestMessage(HttpMethod.Post, baseUrl);
+
                 var postTask = cliente.PostAsJsonAsync<CreateGame>("https://contaminados.meseguercr.com/api/games", game);
                 postTask.Wait();
                 var result = postTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    ViewBag.message = result.Content.ReadAsStreamAsync();
+
+
+                    var readTask = result.Content.ReadFromJsonAsync<DataGet>();
+                    readTask.Wait();
+                    var data = readTask.Result;
+                    ViewBag.message = data.ToJson();
+
                     return View(); ;
                 }
                 else
@@ -146,6 +177,118 @@ namespace ProyectoRedes.Controllers
             }
         }
 
+        public ActionResult StartGame()
+        {
+            return View();
+        }
+        // POST: GameController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult StartGame(GetGameId getGame)
+        {
+            using (var client = new HttpClient())
+            {
+                
+
+                string baseUrl = "https://contaminados.meseguercr.com/api/games" + getGame.gameId;
+
+                var request = new HttpRequestMessage(HttpMethod.Head, baseUrl);
+
+                request.Headers.Add("password", getGame.password);
+
+                request.Headers.Add("player", getGame.player);
+
+
+                // Solicitud HTTP
+                var responseTask = client.SendAsync(request);
+
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+
+                if (result.IsSuccessStatusCode)
+                {
+                    //var data = JsonConvert.DeserializeObject<Data>(result);
+                   
+                    ViewBag.response = "El juego ha comenzado!" + result.StatusCode;
+
+                    return View();
+
+                }
+                else
+                {
+                    ViewBag.response = result.StatusCode;
+                    return View();
+                }
+
+
+            }
+        }
+        public ActionResult GetRounds()
+        {
+            return View();
+
+        }
+
+        // GET
+        [HttpPost]
+        public ActionResult GetRounds(GetGameId getGame)
+        {
+            using (var client = new HttpClient())
+            {
+                //    WebClient webClient = new WebClient();
+                //    webClient.QueryString.Add("name", getGame.name);
+                //    webClient.QueryString.Add("status", getGame.status);
+                //    webClient.QueryString.Add("page", getGame.page.ToString());
+                //    webClient.QueryString.Add("limit", getGame.limit.ToString());
+                //    string result = webClient.DownloadString("https://contaminados.meseguercr.com/api/games");
+
+                //client.BaseAddress = new Uri();
+                //var responseTask = client.GetAsync("https://contaminados.meseguercr.com/api/games?name=" + getGame.gameId);
+
+                string baseUrl = "https://contaminados.meseguercr.com/api/games/" + getGame.gameId + "/rounds";
+
+
+
+                var request = new HttpRequestMessage(HttpMethod.Get, baseUrl);
+
+                request.Headers.Add("password", getGame.password);
+
+                request.Headers.Add("player", getGame.player);
+
+
+                // Solicitud HTTP
+                var responseTask = client.SendAsync(request);
+
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+
+                if (result.IsSuccessStatusCode)
+                {
+                    //var data = JsonConvert.DeserializeObject<Data>(result);
+                    var readTask = result.Content.ReadFromJsonAsync<GetRounds>();
+                    readTask.Wait();
+                    var data = readTask.Result;
+                    ViewBag.response = data.ToJson();
+
+
+
+
+
+                    return View();
+
+                }
+                else
+                {
+                    return View();
+                }
+
+
+
+            }
+
+        }
         // GET: GameController/Edit/5
         public ActionResult Edit(int id)
         {

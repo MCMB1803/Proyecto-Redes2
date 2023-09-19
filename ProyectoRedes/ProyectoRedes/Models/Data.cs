@@ -7,5 +7,7 @@ namespace ProyectoRedes.Models
         public int status { get; set; }
         public string msg { get; set; }
         public List<DataGame> data { get; set; }
+
+
     }
 }

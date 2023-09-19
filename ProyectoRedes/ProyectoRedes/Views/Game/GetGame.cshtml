@@ -38,6 +38,13 @@
         </form>
     </div>
 </div>
+@if (@ViewBag.response != null)
+{   
+    <div>
+        @ViewBag.response
+    </div>
+    
+}
 
 <div>
     <a asp-action="Index">Back to List</a>

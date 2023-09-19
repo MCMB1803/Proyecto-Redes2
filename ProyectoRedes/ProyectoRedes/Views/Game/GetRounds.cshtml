@@ -1,26 +1,21 @@
-﻿@model ProyectoRedes.Models.CreateGame
+﻿@model ProyectoRedes.Models.GetGameId
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "GetRounds";
 }
 
-<h1>Create</h1>
+<h1>GetRounds</h1>
 
-<h4>CreateGame</h4>
+<h4>GetGameId</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="GetRounds">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="name" class="control-label"></label>
-                <input asp-for="name" class="form-control" />
-                <span asp-validation-for="name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="owner" class="control-label"></label>
-                <input asp-for="owner" class="form-control" />
-                <span asp-validation-for="owner" class="text-danger"></span>
+                <label asp-for="gameId" class="control-label"></label>
+                <input asp-for="gameId" class="form-control" />
+                <span asp-validation-for="gameId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="password" class="control-label"></label>
@@ -28,20 +23,28 @@
                 <span asp-validation-for="password" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="player" class="control-label"></label>
+                <input asp-for="player" class="form-control" />
+                <span asp-validation-for="player" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-@if (ViewBag.Message != null)
+@if (@ViewBag.response != null)
 {
-    <div class="alert alert-info">
-        @ViewBag.message
+    <div>
+        @ViewBag.response
     </div>
+
 }
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
