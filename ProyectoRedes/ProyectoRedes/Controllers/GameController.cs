@@ -190,9 +190,11 @@ namespace ProyectoRedes.Controllers
             {
                 
 
-                string baseUrl = "https://contaminados.meseguercr.com/api/games" + getGame.gameId;
+                string baseUrl = "https://contaminados.meseguercr.com/api/games/" + getGame.gameId+"/start";
 
                 var request = new HttpRequestMessage(HttpMethod.Head, baseUrl);
+
+                request.Headers.Add("accept", "*/*");
 
                 request.Headers.Add("password", getGame.password);
 
@@ -223,7 +225,7 @@ namespace ProyectoRedes.Controllers
 
 
             }
-        }
+         }
         public ActionResult GetRounds()
         {
             return View();
