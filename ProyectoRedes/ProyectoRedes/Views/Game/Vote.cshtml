@@ -1,0 +1,60 @@
+﻿@model ProyectoRedes.Models.VoteG
+
+@{
+    ViewData["Title"] = "Vote";
+}
+
+<h1>Vote</h1>
+
+<h4>VoteG</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Vote">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="gameId" class="control-label"></label>
+                <input asp-for="gameId" class="form-control" />
+                <span asp-validation-for="gameId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="roundId" class="control-label"></label>
+                <input asp-for="roundId" class="form-control" />
+                <span asp-validation-for="roundId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password" class="control-label"></label>
+                <input asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="player" class="control-label"></label>
+                <input asp-for="player" class="form-control" />
+                <span asp-validation-for="player" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="vote" /> @Html.DisplayNameFor(model => model.vote)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Vote" class="btn btn-primary" />
+            </div>
+        </form>
+        @if (@ViewBag.response != null)
+        {
+            <div>
+                @ViewBag.response
+            </div>
+
+        }
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

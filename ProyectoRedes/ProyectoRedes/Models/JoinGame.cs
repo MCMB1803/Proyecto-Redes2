@@ -2,9 +2,9 @@
 {
     public class JoinGame
     {
-        public string name { get; set; }
-        public string status { get; set; }
-        public string page { get; set; }
-        public string limit { get; set; }
+        public string id { get; set; }
+        public string password { get; set; }
+
+        public string player { get; set; }
     }
 }

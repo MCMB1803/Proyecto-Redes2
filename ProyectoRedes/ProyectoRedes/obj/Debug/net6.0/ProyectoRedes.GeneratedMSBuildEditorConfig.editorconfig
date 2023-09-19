@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Maria Celeste\Desktop\Version 2\Proyecto-Redes2\ProyectoRedes\ProyectoRedes
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/Action.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxBY3Rpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -32,8 +36,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxHZXRSb3VuZHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/JoinGame.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxKb2luR2FtZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/ProposeGroup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxQcm9wb3NlR3JvdXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/ShowRounds.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxTaG93Um91bmRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/StartGame.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxTdGFydEdhbWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/Vote.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxWb3RlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Home/Index.cshtml]
