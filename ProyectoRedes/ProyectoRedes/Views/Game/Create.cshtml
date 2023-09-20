@@ -3,12 +3,19 @@
 @{
     ViewData["Title"] = "Create";
 }
+@{
+    string username = TempData["Username"] as string;
+}
+<div class="message-container">
+    @if (!string.IsNullOrEmpty(username))
+    {
+        <h1>Bienvenido "@username". Selecciona el modo de juego</h1>
+    }
+</div>
 
-<h1>Create</h1>
-
-<h4>CreateGame</h4>
-<hr />
 <div class="row">
+    <h4>CreateGame</h4>
+    <hr />
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
