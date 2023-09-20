@@ -74,14 +74,6 @@ namespace ProyectoRedes.Controllers
         {
             using (var client = new HttpClient())
             {
-                //    WebClient webClient = new WebClient();
-                //    webClient.QueryString.Add("name", getGame.name);
-                //    webClient.QueryString.Add("status", getGame.status);
-                //    webClient.QueryString.Add("page", getGame.page.ToString());
-                //    webClient.QueryString.Add("limit", getGame.limit.ToString());
-                //    string result = webClient.DownloadString("https://contaminados.meseguercr.com/api/games");
-
-                //client.BaseAddress = new Uri();
                 var responseTask = client.GetAsync("https://contaminados.meseguercr.com/api/games?name=" + getGame.name);
 
                 responseTask.Wait();
@@ -107,12 +99,23 @@ namespace ProyectoRedes.Controllers
             }
 
         }
-        public ActionResult Create()
+        [HttpPost]
+        public ActionResult Welcome(IFormCollection form)
+        {
+            string username = form["username"]; // Obtiene el valor del campo "username" del formulario
+
+            TempData["Username"] = username;
+
+            return RedirectToAction("Create"); // Redirige a la vista "Create" para mostrar el mensaje de bienvenida
+        }
+
+
+        public ActionResult Lobby()
         {
             return View();
         }
 
-        public ActionResult Lobby()
+        public ActionResult Create(IFormCollection form)
         {
             return View();
         }

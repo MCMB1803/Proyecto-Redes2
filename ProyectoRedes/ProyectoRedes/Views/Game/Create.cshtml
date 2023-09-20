@@ -6,6 +6,9 @@
 @{
     string username = TempData["Username"] as string;
 }
+<head>
+    <link rel="stylesheet" href="~/css/homepage.css" asp-append-version="true" />
+</head>
 <div class="message-container">
     @if (!string.IsNullOrEmpty(username))
     {
@@ -13,33 +16,61 @@
     }
 </div>
 
-<div class="row">
-    <h4>CreateGame</h4>
-    <hr />
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="name" class="control-label"></label>
-                <input asp-for="name" class="form-control" />
-                <span asp-validation-for="name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="owner" class="control-label"></label>
-                <input asp-for="owner" class="form-control" />
-                <span asp-validation-for="owner" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="password" class="control-label"></label>
-                <input asp-for="password" class="form-control" />
-                <span asp-validation-for="password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+<div class="form-container" style="display: inline-block;">
+    <form class="form" asp-action="Create">
+        <h5>Crear Partida</h5>
+        <!--<hr />-->
+        <div class="form-group">
+            <label asp-for="name">Nombre de la Partida:</label>
+            <input asp-for="name" type="text" id="name" name="name" required="true">
+        </div>
+        <div class="form-group">
+            <label asp-for="owner">Dueño de la Partida:</label>
+            <input asp-for="owner" type="text" id="owner" name="owner" required="true">
+        </div>
+        <div class="form-group">
+            <label asp-for="password">Contraseña de la Partida:</label>
+            <input asp-for="password" type="password" id="password" name="password" required="">
+        </div>
+        <button class="form-submit-btn" value="Create" type="submit">Iniciar Partida</button>
+    </form>
 </div>
+
+<div class="form-container" style="display: inline-block;">
+    <form class="form" asp-action="GetGame">
+        <h5>Unirse a una Partida</h5>
+        <!--<hr />-->
+        <div class="form-group">
+            <label asp-for="getGame.name">1. Ingrese el nombre y el estado de la partida que desea unirse:</label>
+            <label asp-for="getGame.name">Nombre de la partida:</label>
+            <input asp-for="getGame.name" type="text" id="name" name="name" required="true">
+        </div>
+        <div class="form-group">
+            <label asp-for="getGame.status">Estado de la partida:</label>
+            <select asp-for="getGame.status" id="filter" name="filter">
+                <option value="lobby">lobby</option>
+                <option value="rounds">rounds</option>
+                <option value="ended">ended</option>
+            </select>
+        </div>
+        <button class="form-submit-btn" value="Create" type="submit">Buscar Partidas</button>
+        <div class="form-group">
+            <label asp-for="getGame.name">2. Seleccione la partida:</label>
+            <select asp-for="getGame.name" id="filterGames" name="filterGames">
+                <option value="juego1">juego1</option>
+                <option value="juego2">juego2</option>
+                <option value="juego3">juego3</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="joinGame.password">Ingrese la contraseña de la partida:</label>
+            <input asp-for="joinGame.password" type="password" id="passWordGame" name="passWordGame" required="">
+        </div>
+        <button class="form-submit-btn" type="submit">Unirme a la partida!</button>
+    </form>
+</div>
+
+
 @if (ViewBag.Message != null)
 {
     <div class="alert alert-danger">
