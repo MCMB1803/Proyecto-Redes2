@@ -67,7 +67,7 @@ namespace ProyectoRedes.Controllers
                     }
 
 
-
+                    player.player = Globals.playerName;
                     player.otherPlayers = others;
                     return View(player);
 
@@ -85,6 +85,7 @@ namespace ProyectoRedes.Controllers
                         other.isEnemy = false;
                         otherPlayers.Add(other);
                     }
+                    player.player = Globals.playerName;
                     player.otherPlayers = otherPlayers;
                     return View(player);
                 }
@@ -133,7 +134,7 @@ namespace ProyectoRedes.Controllers
                     }
 
 
-
+                    player.player = Globals.playerName;
                     player.otherPlayers = others;
                     return View(player);
 
@@ -151,6 +152,7 @@ namespace ProyectoRedes.Controllers
                         other.isEnemy = false;
                         otherPlayers.Add(other);
                     }
+                    player.player = Globals.playerName;
                     player.otherPlayers = otherPlayers;
                     return View(player);
                 }
@@ -381,6 +383,7 @@ namespace ProyectoRedes.Controllers
                     var data = readTask.Result;
                     ViewBag.message = data.ToJson();
                     ViewBag.success1 = true;
+                    ViewBag.success2 = true;
                     Globals.gameId = data.data.id;
 
                     return View(); ;
@@ -565,6 +568,7 @@ namespace ProyectoRedes.Controllers
                     Globals.enemies = enemies;
                     Globals.players = players;
                     ViewBag.success = true;
+                    ViewBag.success2 = true;
 
                     return RedirectToAction(nameof(Index),  new { players, enemies } );
                 }
@@ -576,7 +580,10 @@ namespace ProyectoRedes.Controllers
                 }
             }
         }
-
+        public ActionResult Options()
+        {
+            return View();
+        }
         public ActionResult ShowRounds()
         {
             return View();
