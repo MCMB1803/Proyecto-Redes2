@@ -16,3 +16,22 @@ html {
 body {
   margin-bottom: 60px;
 }
+.contenedor{
+    margin:0 auto;
+    align-content:center;
+}
+.playersView{
+    display: flex;
+    flex-direction:row
+    
+}
+.enemy{
+    padding: 12px;
+    background-color: red;
+    color:red;
+}
+.player {
+    padding: 12px;
+    background-color: blue;
+    color: blue;
+}

@@ -9,77 +9,81 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ProyectoRedes
 build_property.RootNamespace = ProyectoRedes
-build_property.ProjectDir = C:\Users\Maria Celeste\Desktop\Version 2\Proyecto-Redes2\ProyectoRedes\ProyectoRedes\
+build_property.ProjectDir = C:\Users\nacho\Desktop\IF6000 Redes en los negocios\Proyecto\Proyecto-Redes2\ProyectoRedes\ProyectoRedes\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Maria Celeste\Desktop\Version 2\Proyecto-Redes2\ProyectoRedes\ProyectoRedes
+build_property.MSBuildProjectDirectory = C:\Users\nacho\Desktop\IF6000 Redes en los negocios\Proyecto\Proyecto-Redes2\ProyectoRedes\ProyectoRedes
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/Action.cshtml]
+[C:/Users/nacho/Desktop/IF6000 Redes en los negocios/Proyecto/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/Action.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxBY3Rpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/Create.cshtml]
+[C:/Users/nacho/Desktop/IF6000 Redes en los negocios/Proyecto/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/GetGame.cshtml]
+[C:/Users/nacho/Desktop/IF6000 Redes en los negocios/Proyecto/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/GetGame.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxHZXRHYW1lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/GetGameById.cshtml]
+[C:/Users/nacho/Desktop/IF6000 Redes en los negocios/Proyecto/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/GetGameById.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxHZXRHYW1lQnlJZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/GetRounds.cshtml]
+[C:/Users/nacho/Desktop/IF6000 Redes en los negocios/Proyecto/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/GetRounds.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxHZXRSb3VuZHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/JoinGame.cshtml]
+[C:/Users/nacho/Desktop/IF6000 Redes en los negocios/Proyecto/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nacho/Desktop/IF6000 Redes en los negocios/Proyecto/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/JoinGame.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxKb2luR2FtZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/ProposeGroup.cshtml]
+[C:/Users/nacho/Desktop/IF6000 Redes en los negocios/Proyecto/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/ProposeGroup.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxQcm9wb3NlR3JvdXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/ShowRounds.cshtml]
+[C:/Users/nacho/Desktop/IF6000 Redes en los negocios/Proyecto/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/ShowRounds.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxTaG93Um91bmRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/StartGame.cshtml]
+[C:/Users/nacho/Desktop/IF6000 Redes en los negocios/Proyecto/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/StartGame.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxTdGFydEdhbWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/Vote.cshtml]
+[C:/Users/nacho/Desktop/IF6000 Redes en los negocios/Proyecto/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Game/Vote.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FtZVxWb3RlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Home/Index.cshtml]
+[C:/Users/nacho/Desktop/IF6000 Redes en los negocios/Proyecto/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Home/Privacy.cshtml]
+[C:/Users/nacho/Desktop/IF6000 Redes en los negocios/Proyecto/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Shared/Error.cshtml]
+[C:/Users/nacho/Desktop/IF6000 Redes en los negocios/Proyecto/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/nacho/Desktop/IF6000 Redes en los negocios/Proyecto/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/_ViewImports.cshtml]
+[C:/Users/nacho/Desktop/IF6000 Redes en los negocios/Proyecto/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/_ViewStart.cshtml]
+[C:/Users/nacho/Desktop/IF6000 Redes en los negocios/Proyecto/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Maria Celeste/Desktop/Version 2/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Shared/_Layout.cshtml]
+[C:/Users/nacho/Desktop/IF6000 Redes en los negocios/Proyecto/Proyecto-Redes2/ProyectoRedes/ProyectoRedes/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-me65km1747

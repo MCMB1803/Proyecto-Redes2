@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using NuGet.Protocol;
 using ProyectoRedes.Models;
+using ProyectoRedes.Models.Global;
 using System;
 using System.Net;
 using System.Numerics;
@@ -12,10 +13,159 @@ namespace ProyectoRedes.Controllers
 {
     public class GameController : Controller
     {
+
+        Globals Globals = new Globals();
+        
+
         // GET: GameController
-        public ActionResult Index()
+        public ActionResult Index(List<string> players, List<string> enemies)
         {
-            return View();
+
+            var globalPlayers= Globals.players;
+            var globalEnemies = Globals.enemies;
+            //playersGame.playersIn = players;
+
+            if (players != null && enemies != null)
+            {
+                if (enemies.Count > 0)
+                {
+
+                    var player = new Player();
+                    var others = new List<PlayerCheck>();
+                    var delete = new List<string>();
+                    delete = players;
+                    foreach (var p in players)
+                    {
+
+                        foreach (var enemy in enemies)
+                        {
+                            if (enemy == p)
+                            {
+                                var other = new PlayerCheck();
+                                other.name = enemy;
+                                other.isEnemy = true;
+                                others.Add(other);
+
+                            }
+
+                        }
+
+                    }
+
+
+                    foreach (var enemy in others)
+                    {
+                        delete.Remove(enemy.name);
+
+                    }
+
+                    foreach (var p in players)
+                    {
+                        var other = new PlayerCheck();
+                        other.name = p;
+                        other.isEnemy = false;
+                        others.Add(other);
+                    }
+
+
+
+                    player.otherPlayers = others;
+                    return View(player);
+
+
+
+                }
+                else
+                {
+                    var player = new Player();
+                    var otherPlayers = new List<PlayerCheck>();
+                    foreach (var p in players)
+                    {
+                        var other = new PlayerCheck();
+                        other.name = p;
+                        other.isEnemy = false;
+                        otherPlayers.Add(other);
+                    }
+                    player.otherPlayers = otherPlayers;
+                    return View(player);
+                }
+
+
+            }
+            else if(Globals.players != null && Globals.enemies != null)
+            {
+                if (Globals.enemies.Count > 0)
+                {
+
+                    var player = new Player();
+                    var others = new List<PlayerCheck>();
+                    var delete = new List<string>();
+                    delete = Globals.players;
+                    foreach (var p in Globals.players)
+                    {
+
+                        foreach (var enemy in Globals.enemies)
+                        {
+                            if (enemy == p)
+                            {
+                                var other = new PlayerCheck();
+                                other.name = enemy;
+                                other.isEnemy = true;
+                                others.Add(other);
+
+                            }
+
+                        }
+
+                    }
+
+
+                    foreach (var enemy in others)
+                    {
+                        delete.Remove(enemy.name);
+
+                    }
+
+                    foreach (var p in Globals.players)
+                    {
+                        var other = new PlayerCheck();
+                        other.name = p;
+                        other.isEnemy = false;
+                        others.Add(other);
+                    }
+
+
+
+                    player.otherPlayers = others;
+                    return View(player);
+
+
+
+                }
+                else
+                {
+                    var player = new Player();
+                    var otherPlayers = new List<PlayerCheck>();
+                    foreach (var p in Globals.players)
+                    {
+                        var other = new PlayerCheck();
+                        other.name = p;
+                        other.isEnemy = false;
+                        otherPlayers.Add(other);
+                    }
+                    player.otherPlayers = otherPlayers;
+                    return View(player);
+                }
+            }
+            else{ return View(); }
+
+
+
+
+
+
+
+
         }
 
         // GET: GameController/Details/5
@@ -60,13 +210,71 @@ namespace ProyectoRedes.Controllers
                     var data = readTask.Result;
                     ViewBag.response = data.ToJson();
 
+                    //var players = data.data.ToList();
+
 
                     return View();
+
+
+
 
                 }
                 else
                 {
                     return View();
+                }
+
+
+
+            }
+
+        }
+
+        public void GetGameMethod(Globals getGame)
+        {
+            using (var client = new HttpClient())
+            {
+                //    WebClient webClient = new WebClient();
+
+
+                string baseUrl = "https://contaminados.meseguercr.com/api/games/" + getGame.gameId;
+
+
+
+                var request = new HttpRequestMessage(HttpMethod.Get, baseUrl);
+
+                request.Headers.Add("password", getGame.password);
+
+                request.Headers.Add("player", getGame.playerName);
+
+
+                // Solicitud HTTP
+                var responseTask = client.SendAsync(request);
+
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+
+                if (result.IsSuccessStatusCode)
+                {
+                    //var data = JsonConvert.DeserializeObject<Data>(result);
+                    var readTask = result.Content.ReadFromJsonAsync<DataGet>();
+                    readTask.Wait();
+                    var data = readTask.Result;
+                    ViewBag.response = data.ToJson();
+
+                    var players = data.data.players.ToList();
+                    var enemies = data.data.enemies.ToList();
+
+
+                    Globals.enemies = enemies;
+                    Globals.players = players;
+
+
+                }
+                else
+                {
+                    
                 }
 
 
@@ -123,11 +331,15 @@ namespace ProyectoRedes.Controllers
                     var data = readTask.Result;
                     ViewBag.response = data.ToJson();
 
+                    var players = data.data.players.ToList();
+                    var enemies = data.data.enemies.ToList();
+
+                    Globals.enemies = enemies;
+                    Globals.players = players;
 
 
+                    return RedirectToAction(nameof(Index), new { players, enemies });
 
-
-                    return View();
 
                 }
                 else
@@ -161,7 +373,7 @@ namespace ProyectoRedes.Controllers
                 if (result.IsSuccessStatusCode)
                 {
 
-
+                    Globals.playerName = game.owner;
                     var readTask = result.Content.ReadFromJsonAsync<DataGet>();
                     readTask.Wait();
                     var data = readTask.Result;
@@ -304,6 +516,7 @@ namespace ProyectoRedes.Controllers
         {
             using (var client = new HttpClient())
             {
+               
                 // Set the base address
                 string baseUrl = "https://contaminados.meseguercr.com/api/games/" + game.id;
                 var requestBody = new
@@ -322,7 +535,7 @@ namespace ProyectoRedes.Controllers
 
                 request.Headers.Add("password", game.password);
                 request.Headers.Add("player", game.player);
-
+                Globals.playerName = game.player;
 
                 // Solicitud HTTP
                 var responseTask = client.SendAsync(request);
@@ -339,12 +552,18 @@ namespace ProyectoRedes.Controllers
                     readTask.Wait();
                     var data = readTask.Result;
 
-                    ViewBag.Message = data.ToJson();
+                    var players = data.data.players.ToList();
+                    var enemies = data.data.enemies.ToList();
+                    var name = game.player;
+                    ViewBag.players = data.data.players.ToList();
+                    ViewBag.enemies = data.data.enemies.ToList();   
 
-                    return View();
+
+                    return RedirectToAction(nameof(Index),  new { players, enemies } );
                 }
                 else
                 {
+                    ViewBag.Message = result.Content.ReadAsStringAsync();
                     // Handle the error response here
                     return View();
                 }
@@ -452,6 +671,7 @@ namespace ProyectoRedes.Controllers
                         var data = readTask.Result;
 
                         ViewBag.Message = data.ToJson();
+
 
                         return View();
                     }

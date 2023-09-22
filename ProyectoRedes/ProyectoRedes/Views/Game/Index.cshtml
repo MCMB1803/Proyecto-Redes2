@@ -1,0 +1,35 @@
+﻿@model ProyectoRedes.Models.Player
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<
+
+
+<h1> Players </h1>
+<div class="playersView">
+@foreach(var item in Model.otherPlayers)
+{
+   
+    <h2>@item.name</h2>
+        @if(item.isEnemy == true)
+        {
+            <div class="enemy">
+
+            </div>
+        }
+        else
+        {
+            <div class="player">
+            </div>
+        }
+
+
+    }
+</div>
