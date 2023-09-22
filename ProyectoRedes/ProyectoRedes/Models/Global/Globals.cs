@@ -12,5 +12,6 @@
         public static List<string> players { get; set; }
         
         public static List<string> enemies { get; set; }
+
     }
 }
