@@ -15,6 +15,7 @@ namespace ProyectoRedes.Controllers
     {
 
         public Globals Globals = new Globals();
+        public GlobalData GlobalData = new GlobalData();
 
         // GET: GameController
         public ActionResult Index(List<string> players, List<string> enemies)
@@ -382,8 +383,8 @@ namespace ProyectoRedes.Controllers
                     readTask.Wait();
                     var data = readTask.Result;
                     ViewBag.message = data.ToJson();
-                    ViewBag.success1 = true;
-                    ViewBag.success2 = true;
+                    GlobalData.success1 = true;
+                    GlobalData.success2 = true;
                     Globals.gameId = data.data.id;
 
                     return View(); ;
@@ -434,7 +435,7 @@ namespace ProyectoRedes.Controllers
                     //var data = JsonConvert.DeserializeObject<Data>(result);
 
                     ViewBag.response = "El juego ha comenzado!" + result.StatusCode;
-
+                    GlobalData.success3 = true;
                     return View();
 
                 }
@@ -567,8 +568,9 @@ namespace ProyectoRedes.Controllers
                     var name = game.player;
                     Globals.enemies = enemies;
                     Globals.players = players;
-                    ViewBag.success = true;
-                    ViewBag.success2 = true;
+                    GlobalData.success = true;
+                    GlobalData.success2 = true;
+         
 
                     return RedirectToAction(nameof(Index),  new { players, enemies } );
                 }
@@ -582,7 +584,7 @@ namespace ProyectoRedes.Controllers
         }
         public ActionResult Options()
         {
-            return View();
+            return View(GlobalData);
         }
         public ActionResult ShowRounds()
         {

@@ -1,16 +1,16 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using ProyectoRedes.Models.Global
+
 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
     <ul class="navbar-nav flex-grow-1">
-        <
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Index">Lobby</a>
-        </li>
+
+        @if (GlobalData.success2 == true)
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Index">Lobby</a>
+            </li>
+        }
        
-        @if (ViewBag.success != true)
+        @if (GlobalData.success != true)
         {
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Create">CreateGame</a>
@@ -21,8 +21,8 @@
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="GetGame">GetGame</a>
         </li>
-
-        @if (ViewBag.success2 == true)
+        
+        @if (GlobalData.success2 == true)
         {
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="GetGameMethod">Refresh</a>
@@ -30,29 +30,31 @@
 
         }
 
-        @if (ViewBag.success1 != true)
+        @if (GlobalData.success1 != true)
         {
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="JoinGame">JoinGame</a>
             </li>
         }
+         @if (GlobalData.success2 == true)
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="StartGame">Start Game</a>
+            </li>
+        }
+        @if(GlobalData.success3 == true){
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="GetRounds">GetRounds</a>
+            </li>
 
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="ProposeGroup">Group</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Vote">Vote</a>
+            </li>
+            }
+       
         
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="StartGame">Start Game</a>
-        </li>
-
-
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="GetRounds">GetRounds</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="ProposeGroup">Group</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Vote">Vote</a>
-        </li>
-        -->
     </ul>
 </div>
