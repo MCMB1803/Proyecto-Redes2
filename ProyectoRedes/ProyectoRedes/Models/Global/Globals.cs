@@ -2,15 +2,15 @@
 {
     public class Globals
 {
-        public string gameId { get; set; }
-        public string gameName { get; set; }    
+        public static string gameId { get; set; }
+        public static string gameName { get; set; }    
 
-        public string playerName { get; set; }
+        public static string playerName { get; set; }
 
-        public string password { get; set; }
+        public static string password { get; set; }
 
-        public List<string> players { get; set; }
+        public static List<string> players { get; set; }
         
-        public List<string> enemies { get; set; }
+        public static List<string> enemies { get; set; }
     }
 }

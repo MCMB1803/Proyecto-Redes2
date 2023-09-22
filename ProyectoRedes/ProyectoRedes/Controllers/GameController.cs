@@ -14,8 +14,7 @@ namespace ProyectoRedes.Controllers
     public class GameController : Controller
     {
 
-        Globals Globals = new Globals();
-        
+        public Globals Globals = new Globals();
 
         // GET: GameController
         public ActionResult Index(List<string> players, List<string> enemies)
@@ -25,7 +24,7 @@ namespace ProyectoRedes.Controllers
             var globalEnemies = Globals.enemies;
             //playersGame.playersIn = players;
 
-            if (players != null && enemies != null)
+            if (players.Count > 0)
             {
                 if (enemies.Count > 0)
                 {
@@ -92,19 +91,18 @@ namespace ProyectoRedes.Controllers
 
 
             }
-            else if(Globals.players != null && Globals.enemies != null)
+            else if(globalPlayers != null)
             {
-                if (Globals.enemies.Count > 0)
+                if (globalEnemies.Count > 0)
                 {
 
                     var player = new Player();
                     var others = new List<PlayerCheck>();
-                    var delete = new List<string>();
-                    delete = Globals.players;
-                    foreach (var p in Globals.players)
+                    var delete = new List<string>(globalPlayers);
+                    foreach (var p in globalPlayers)
                     {
 
-                        foreach (var enemy in Globals.enemies)
+                        foreach (var enemy in globalEnemies)
                         {
                             if (enemy == p)
                             {
@@ -126,7 +124,7 @@ namespace ProyectoRedes.Controllers
 
                     }
 
-                    foreach (var p in Globals.players)
+                    foreach (var p in delete)
                     {
                         var other = new PlayerCheck();
                         other.name = p;
@@ -146,7 +144,7 @@ namespace ProyectoRedes.Controllers
                 {
                     var player = new Player();
                     var otherPlayers = new List<PlayerCheck>();
-                    foreach (var p in Globals.players)
+                    foreach (var p in globalPlayers)
                     {
                         var other = new PlayerCheck();
                         other.name = p;
@@ -230,22 +228,22 @@ namespace ProyectoRedes.Controllers
 
         }
 
-        public void GetGameMethod(Globals getGame)
+        public ActionResult GetGameMethod()
         {
             using (var client = new HttpClient())
             {
                 //    WebClient webClient = new WebClient();
 
 
-                string baseUrl = "https://contaminados.meseguercr.com/api/games/" + getGame.gameId;
+                string baseUrl = "https://contaminados.meseguercr.com/api/games/" + Globals.gameId;
 
 
 
                 var request = new HttpRequestMessage(HttpMethod.Get, baseUrl);
 
-                request.Headers.Add("password", getGame.password);
+                request.Headers.Add("password", Globals.password);
 
-                request.Headers.Add("player", getGame.playerName);
+                request.Headers.Add("player", Globals.playerName);
 
 
                 // Solicitud HTTP
@@ -269,12 +267,14 @@ namespace ProyectoRedes.Controllers
 
                     Globals.enemies = enemies;
                     Globals.players = players;
+                    return RedirectToAction(nameof(Index), new { players, enemies });
+
 
 
                 }
                 else
                 {
-                    
+                    return RedirectToAction(nameof(Index));
                 }
 
 
@@ -374,10 +374,14 @@ namespace ProyectoRedes.Controllers
                 {
 
                     Globals.playerName = game.owner;
+                    Globals.password=game.password;
+                   
                     var readTask = result.Content.ReadFromJsonAsync<DataGet>();
                     readTask.Wait();
                     var data = readTask.Result;
                     ViewBag.message = data.ToJson();
+                    ViewBag.success1 = true;
+                    Globals.gameId = data.data.id;
 
                     return View(); ;
                 }
@@ -423,6 +427,7 @@ namespace ProyectoRedes.Controllers
 
                 if (result.IsSuccessStatusCode)
                 {
+
                     //var data = JsonConvert.DeserializeObject<Data>(result);
 
                     ViewBag.response = "El juego ha comenzado!" + result.StatusCode;
@@ -536,6 +541,8 @@ namespace ProyectoRedes.Controllers
                 request.Headers.Add("password", game.password);
                 request.Headers.Add("player", game.player);
                 Globals.playerName = game.player;
+                Globals.password = game.password;
+                Globals.gameId = game.id;
 
                 // Solicitud HTTP
                 var responseTask = client.SendAsync(request);
@@ -555,9 +562,9 @@ namespace ProyectoRedes.Controllers
                     var players = data.data.players.ToList();
                     var enemies = data.data.enemies.ToList();
                     var name = game.player;
-                    ViewBag.players = data.data.players.ToList();
-                    ViewBag.enemies = data.data.enemies.ToList();   
-
+                    Globals.enemies = enemies;
+                    Globals.players = players;
+                    ViewBag.success = true;
 
                     return RedirectToAction(nameof(Index),  new { players, enemies } );
                 }

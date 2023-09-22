@@ -19,26 +19,38 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        <!-- Este es un comentario en HTML. No se mostrará en la página web. 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Index">Lobby</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Create">CreateGame</a>
-                        </li>
+                        -->
+                        @if(ViewBag.success != true)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Create">CreateGame</a>
+                            </li>
+                        }
+                        
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="GetGame">GetGame</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="GetGameById">GetGameById</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="JoinGame">JoinGame</a>
-                        </li>
-
+                        <!--
+                                                <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="GetGameMethod">GetGameById</a>
+                        </li>-->
+                        @if (ViewBag.success1 != true)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="JoinGame">JoinGame</a>
+                            </li>
+                        }
+                        
+                        <!--
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="StartGame">Start Game</a>
                         </li>
-                    
+                        
 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="GetRounds">GetRounds</a>
@@ -50,6 +62,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Vote">Vote</a>
                         </li>
+                        -->
                     </ul>
                 </div>
             </div>
