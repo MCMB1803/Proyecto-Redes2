@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Maria Celeste\\Desktop\\Proyecto-Redes2\\ProyectoRedes\\ProyectoRedes\\wwwroot\\js\\script.js",
+      "PackagePath": "staticwebassets\\js\\script.js"
+    },
+    {
       "Id": "C:\\Users\\Maria Celeste\\Desktop\\Proyecto-Redes2\\ProyectoRedes\\ProyectoRedes\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

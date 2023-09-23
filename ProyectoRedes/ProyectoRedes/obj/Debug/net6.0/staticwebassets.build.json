@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vwBLZz1ZjKlDj0FsuY7hNamlSQ/4dxuncdO9MoYcDKc=",
+  "Hash": "VcLEcT0jtveo7lsD9X2WPnpXP8ZWEuRHrnp2T5Cf+PI=",
   "Source": "ProyectoRedes",
   "BasePath": "_content/ProyectoRedes",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Maria Celeste\\Desktop\\Proyecto-Redes2\\ProyectoRedes\\ProyectoRedes\\wwwroot\\js\\script.js",
+      "SourceId": "ProyectoRedes",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Maria Celeste\\Desktop\\Proyecto-Redes2\\ProyectoRedes\\ProyectoRedes\\wwwroot\\",
+      "BasePath": "_content/ProyectoRedes",
+      "RelativePath": "js/script.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\script.js"
     },
     {
       "Identity": "C:\\Users\\Maria Celeste\\Desktop\\Proyecto-Redes2\\ProyectoRedes\\ProyectoRedes\\wwwroot\\js\\site.js",

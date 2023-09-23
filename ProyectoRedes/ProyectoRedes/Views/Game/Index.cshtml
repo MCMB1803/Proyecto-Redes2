@@ -1,4 +1,5 @@
 ﻿@model ProyectoRedes.Models.Player
+@using ProyectoRedes.Models.Global
 
 @{
     ViewData["Title"] = "Index";
@@ -9,7 +10,6 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-
 
 
 <h1> Players </h1>
@@ -33,3 +33,17 @@
 
     }
 </div>
+
+@if (GlobalData.success3 == true)
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="GetRounds">GetRounds</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="ProposeGroup">Group</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Vote">Vote</a>
+    </li>
+}

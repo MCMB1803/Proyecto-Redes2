@@ -496,10 +496,6 @@ namespace ProyectoRedes.Controllers
                     var data = readTask.Result;
                     ViewBag.response = data.ToJson();
 
-
-
-
-
                     return View();
 
                 }
