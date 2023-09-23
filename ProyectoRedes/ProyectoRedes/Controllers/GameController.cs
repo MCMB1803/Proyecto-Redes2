@@ -18,10 +18,20 @@ namespace ProyectoRedes.Controllers
         public GlobalData GlobalData = new GlobalData();
 
         // GET: GameController
-        public ActionResult Index(List<string> players, List<string> enemies)
-        {
 
-            var globalPlayers= Globals.players;
+        public ActionResult Index(
+            List<string> players, 
+            List<string> enemies, 
+            string leader, 
+            string result, 
+            string phase, 
+            string status, 
+            List<string> group, 
+            List<bool> votes)
+        {
+            //return RedirectToAction(nameof(Index),
+              //          new { players, enemies, resp.leader, resp.result, resp.phase, resp.status, resp.group, resp.votes });
+            var globalPlayers = Globals.players;
             var globalEnemies = Globals.enemies;
             //playersGame.playersIn = players;
 
@@ -70,6 +80,19 @@ namespace ProyectoRedes.Controllers
 
                     player.player = Globals.playerName;
                     player.otherPlayers = others;
+                    if(leader != null && 
+                        result != null &&
+                         phase != null &&
+                         status != null &&
+                         group != null &&
+                         votes != null){
+
+                        player.leader = leader;
+                        player.group = group;
+                        player.status = status;
+                        player.votes = votes;
+
+                    }
                     return View(player);
 
 
@@ -88,12 +111,26 @@ namespace ProyectoRedes.Controllers
                     }
                     player.player = Globals.playerName;
                     player.otherPlayers = otherPlayers;
+                    if (leader != null &&
+                       result != null &&
+                        phase != null &&
+                        status != null &&
+                        group != null &&
+                        votes != null)
+                    {
+
+                        player.leader = leader;
+                        player.group = group;
+                        player.status = status;
+                        player.votes = votes;
+
+                    }
                     return View(player);
                 }
 
 
             }
-            else if(globalPlayers != null)
+            else if (globalPlayers != null)
             {
                 if (globalEnemies.Count > 0)
                 {
@@ -137,6 +174,21 @@ namespace ProyectoRedes.Controllers
 
                     player.player = Globals.playerName;
                     player.otherPlayers = others;
+                    if (Globals.leader != null &&
+                       Globals.result != null &&
+                        Globals.phase != null &&
+                        Globals.status != null &&
+                        Globals.group != null &&
+                        Globals.votes != null)
+                    {
+
+                        player.leader = Globals.leader;
+                        player.group = Globals.group;
+                        player.status = Globals.status;
+                        player.votes = Globals.votes;
+
+                    }
+
                     return View(player);
 
 
@@ -155,19 +207,25 @@ namespace ProyectoRedes.Controllers
                     }
                     player.player = Globals.playerName;
                     player.otherPlayers = otherPlayers;
+                    if (Globals.leader != null &&
+                       Globals.result != null &&
+                        Globals.phase != null &&
+                        Globals.status != null &&
+                        Globals.group != null &&
+                        Globals.votes != null)
+                    {
+
+                        player.leader = Globals.leader;
+                        player.group = Globals.group;
+                        player.status = Globals.status;
+                        player.votes = Globals.votes;
+
+                    }
                     return View(player);
                 }
             }
-            else{ return View(); }
-
-
-
-
-
-
-
-
-        }
+            else { return View(); }
+    }
 
         // GET: GameController/Details/5
         public ActionResult Details(int id)
@@ -230,7 +288,66 @@ namespace ProyectoRedes.Controllers
             }
 
         }
+        public void ShowRoundsMethod(IndexReturn resp)
+        {
+            using (var client = new HttpClient())
+            {
+                // Set the base address
+                string baseUrl = "https://contaminados.meseguercr.com/api/games/" + Globals.gameId + "/rounds/" + Globals.roundId;
 
+
+                // Crear una solicitud HTTP POST con el cuerpo JSON
+                var request = new HttpRequestMessage(HttpMethod.Get, baseUrl);
+
+                request.Headers.Add("password", Globals.password);
+                request.Headers.Add("player", Globals.playerName);
+
+
+                // Solicitud HTTP
+                var responseTask = client.SendAsync(request);
+                // Send the GET request with headers and query parameter
+
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+
+                if (result.IsSuccessStatusCode)
+                {
+                    // Handle the successful response here
+                    var readTask = result.Content.ReadFromJsonAsync<DataRounds>();
+                    readTask.Wait();
+                    var data = readTask.Result;
+                    var leader = data.data.leader;
+                    var status = data.data.status;  
+                    var resultRound = data.data.result;  
+                    var phase = data.data.phase;
+                    var group = data.data.group;
+                    var votes = data.data.votes;
+
+                    resp.phase = phase;
+                    resp.group = group; 
+                    resp.result = resultRound;
+                    resp.status = status;
+                    resp.leader = leader;
+                    resp.votes = votes;
+
+                    Globals.votes = resp.votes;
+                    Globals.phase = resp.phase;
+                    Globals.group = resp.group;
+                    Globals.result = resp.result;
+                    Globals.status = resp.status;
+                    Globals.leader = resp.leader;
+
+                    ViewBag.Message = data.ToJson();
+
+                }
+                else
+                {
+                    // Handle the error response here
+
+                }
+            }
+        }
         public ActionResult GetGameMethod()
         {
             using (var client = new HttpClient())
@@ -266,11 +383,20 @@ namespace ProyectoRedes.Controllers
 
                     var players = data.data.players.ToList();
                     var enemies = data.data.enemies.ToList();
+                    var roundId = data.data.currentRound;
 
 
                     Globals.enemies = enemies;
                     Globals.players = players;
-                    return RedirectToAction(nameof(Index), new { players, enemies });
+                    Globals.roundId = roundId;
+
+                    IndexReturn resp = new IndexReturn();
+
+                    ShowRoundsMethod(resp);
+         
+
+                    return RedirectToAction(nameof(Index), 
+                        new {players, enemies, resp.leader, resp.result, resp.phase, resp.status, resp.group, resp.votes });
 
 
 
@@ -336,7 +462,7 @@ namespace ProyectoRedes.Controllers
 
                     var players = data.data.players.ToList();
                     var enemies = data.data.enemies.ToList();
-
+                    
                     Globals.enemies = enemies;
                     Globals.players = players;
 
@@ -511,7 +637,6 @@ namespace ProyectoRedes.Controllers
 
 
             }
-
         }
         public ActionResult JoinGame()
         {
@@ -568,11 +693,14 @@ namespace ProyectoRedes.Controllers
                     var name = game.player;
                     Globals.enemies = enemies;
                     Globals.players = players;
+                    Globals.roundId = data.data.currentRound;
                     GlobalData.success = true;
                     GlobalData.success2 = true;
-         
 
-                    return RedirectToAction(nameof(Index),  new { players, enemies } );
+                    IndexReturn resp = new IndexReturn();
+
+                    return RedirectToAction(nameof(Index),
+                        new { players, enemies});
                 }
                 else
                 {
@@ -634,6 +762,9 @@ namespace ProyectoRedes.Controllers
                 }
             }
         }
+
+       
+
 
 
         public ActionResult ProposeGroup()

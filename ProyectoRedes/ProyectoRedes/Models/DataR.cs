@@ -9,7 +9,7 @@
         public string createdAt { set; get; }
         public string updatedAt { get; set; }
         public List<string> group { get; set; }
-        public List<string> votes { get; set; }
+        public List<bool> votes { get; set; }
         public string id { get; set; }
     }
 }

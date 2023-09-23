@@ -9,6 +9,18 @@ namespace ProyectoRedes.Models
 
         public string player { get;set; }
 
+        public string leader { get; set; }
+
+        public List<bool> votes { get; set; }
+
+        public List<string> group { get; set; }
+
+        public string status { get; set; }
+
+
+
+
+
         
 
     }

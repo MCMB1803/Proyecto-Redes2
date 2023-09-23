@@ -31,5 +31,23 @@
         }
 
 
+ }
+ </div>
+
+    @if (Model.group != null && Model.votes != null && Model.status != null && Model.leader != null)
+    {
+         <h1>Group</h1>
+            @foreach (var item in Model.group)
+            {
+                <h3>@item.ToString()</h3>
+            }
+                <h1>Votes</h1>
+            @foreach (var item in Model.votes)
+            {
+                <h3>@item.ToString()</h3>
+            }
+        <h2>Leader:  @Model.leader</h2>
+        <h2>status: @Model.status</h2>
+
     }
-</div>
+   
