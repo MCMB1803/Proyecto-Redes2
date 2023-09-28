@@ -1,10 +1,18 @@
 ﻿@using ProyectoRedes.Models.Global
-
+@{
+    string username = TempData["Username"] as string;
+}
 <head>
     <link rel="stylesheet" href="~/css/options.css" asp-append-version="true" />
 </head>
-<h2>Elige el modo de juego:</h2>
-<hr />
+<div class="message-container">
+    @if (!string.IsNullOrEmpty(username))
+    {
+        <h2>Bienvenido "@username". Selecciona el modo de juego</h2>
+        <hr />
+    }
+</div>
+
 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
     
     <ul class="navbar-nav flex-grow-1">
