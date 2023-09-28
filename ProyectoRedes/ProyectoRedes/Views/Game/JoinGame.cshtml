@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "JoinGame";
+    string username = TempData["Username"] as string;
 }
 
 <head>
@@ -24,7 +25,7 @@
         </div>
         <div class="form-group">
             <label asp-for="player">Ingresa tu nombre:</label>
-            <input asp-for="player" type="text" id="player" name="player" required="true" />
+            <input asp-for="player" type="text" id="player" name="player" required="true" value="@username" />
             <span asp-validation-for="player" class="text-danger"></span>
         </div>
         <button class="form-submit-btn" value="Join" type="submit">Unirme!</button>

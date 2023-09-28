@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Create";
+    string username = TempData["Username"] as string;
 }
 
 <head>
@@ -20,7 +21,7 @@
         </div>
         <div class="form-group">
             <label asp-for="owner">Dueño de la Partida:</label>
-            <input asp-for="owner" type="text" id="owner" name="owner" required="true">
+            <input asp-for="owner" type="text" id="owner" name="owner" required="true" value="@username">
             <span asp-validation-for="owner" class="text-danger"></span>
         </div>
         <div class="form-group">
