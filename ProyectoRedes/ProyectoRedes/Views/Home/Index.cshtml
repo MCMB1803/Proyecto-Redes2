@@ -1,8 +1,21 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<head>
+    <link rel="stylesheet" href="~/css/homepage.css" asp-append-version="true" />
+</head>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="form-container">
+    <div class="text-center">
+        <h1 class="display-4">Bienvenido a ContaminaDos</h1>
+    </div>
+    <form class="form" method="post" asp-action="Options" asp-controller="Game">
+        <div class="form-group">
+            <label for="username">Ingresa tu nombre para iniciar:</label>
+            <input type="text" id="username" name="username" required="true">
+            <label for="server">Ingresa el nombre del server al que te vas unir:</label>
+            <input type="text" id="server" name="server" value="https://contaminados.meseguercr.com/">
+        </div>
+        <button class="form-submit-btn" type="submit">Ingresar</button>
+    </form>
 </div>

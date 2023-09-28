@@ -481,8 +481,9 @@ namespace ProyectoRedes.Controllers
             }
 
         }
-        public ActionResult Create()
+        public ActionResult Create(string username)
         {
+            TempData["Username"] = username;
             return View();
         }
         // POST: GameController/Create
@@ -638,8 +639,9 @@ namespace ProyectoRedes.Controllers
 
             }
         }
-        public ActionResult JoinGame()
+        public ActionResult JoinGame(string username)
         {
+            TempData["Username"] = username;
             return View();
         }
 
@@ -710,8 +712,12 @@ namespace ProyectoRedes.Controllers
                 }
             }
         }
-        public ActionResult Options()
+        public ActionResult Options(IFormCollection form)
         {
+            //Guardar nombre de usuario
+            string username = form["username"];
+            TempData["Username"] = username;
+
             return View(GlobalData);
         }
         public ActionResult ShowRounds()
