@@ -1,6 +1,12 @@
 ﻿@using ProyectoRedes.Models.Global
 
+<head>
+    <link rel="stylesheet" href="~/css/options.css" asp-append-version="true" />
+</head>
+<h2>Elige el modo de juego:</h2>
+<hr />
 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+    
     <ul class="navbar-nav flex-grow-1">
 
         @if (GlobalData.success2 == true)
@@ -12,19 +18,25 @@
        
         @if (GlobalData.success != true)
         {
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Create">CreateGame</a>
-            </li>
+                <a data-text="Awesome" class="button" asp-area="" asp-controller="Game" asp-action="Create">
+                    <span class="actual-text">&nbsp;1. Crear un Juego&nbsp;</span>
+                    <span class="hover-text" aria-hidden="true">&nbsp;1. Crear un Juego&nbsp;</span>
+                </a>
+               <!-- <a class="optionstyle" asp-area="" asp-controller="Game" asp-action="Create">1. Crear un Juego</a>-->
+            <br />
         }
-
-
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="GetGame">GetGame</a>
-        </li>
+            <a data-text="Awesome" class="button" asp-area="" asp-controller="Game" asp-action="GetGame">
+                <span class="actual-text">&nbsp;2. Ver los juegos&nbsp;</span>
+                <span class="hover-text" aria-hidden="true">&nbsp;2. Ver los juegos&nbsp;</span>
+            </a>
+        <br />
+            <!--<a class="optionstyle" asp-area="" asp-controller="Game" asp-action="GetGame">2. Ver todos los juegos</a>-->
+        
         
         @if (GlobalData.success2 == true)
         {
             <li class="nav-item">
+                
                 <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="GetGameMethod">Refresh</a>
             </li>
 
@@ -32,9 +44,11 @@
 
         @if (GlobalData.success1 != true)
         {
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="JoinGame">JoinGame</a>
-            </li>
+            <a data-text="Awesome" class="button" asp-area="" asp-controller="Game" asp-action="JoinGame">
+                <span class="actual-text">&nbsp;3. Unirme a una partida&nbsp;</span>
+                <span class="hover-text" aria-hidden="true">&nbsp;3. Unirme a una partida&nbsp;</span>
+            </a>
+            <br />
         }
          @if (GlobalData.success2 == true)
         {
